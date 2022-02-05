@@ -2,6 +2,10 @@
 
 This project is a sample setup to build an app with [Elm](https://elm-lang.org/), [Capacitor](https://capacitorjs.com/), [Parcel](https://parceljs.org/) and [Tailwindcss](https://tailwindcss.com/)
 
+## Environment setup
+
+Please follow the [Capacitor documentation](https://capacitorjs.com/docs/getting-started/environment-setup) to setup your environment.
+
 ## Installation
 
 Clone this repository and install dependencies
