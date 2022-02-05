@@ -1,11 +1,13 @@
 module Main exposing (..)
 
 import Browser exposing (Document)
+import Capacitor.Toast as Toast
 import Html exposing (button, div, text)
 import Html.Attributes exposing (class)
+import Html.Events exposing (onClick)
 
 
-main : Program () String msg
+main : Program () String Msg
 main =
     Browser.document
         { init = init
@@ -15,23 +17,37 @@ main =
         }
 
 
-init : () -> ( String, Cmd msg )
+init : () -> ( String, Cmd Msg )
 init _ =
     ( "Hello", Cmd.none )
 
 
-view : String -> Document msg
+view : String -> Document Msg
 view model =
     { title = "My Elm App"
     , body =
-        [ div [ class "flex flex-col h-screen w-screen justify-center items-center bg-gray-800 text-white text-xl" ]
+        [ div [ class "flex flex-col h-screen w-screen justify-center items-center bg-gray-50 text-gray-900 text-xl" ]
             [ text <| model ++ " World from Elm !!! 🚀"
-            , button [ class "my-4 py-2 px-6 bg-indigo-700 font-bold text-white rounded" ] [ text "Click me" ]
+            , button
+                [ class "my-4 py-1 px-6 bg-indigo-700 text-white rounded text-lg"
+                , onClick
+                    (Toast.new "Fly to the moon 🌔"
+                        |> Toast.withPosition Toast.Bottom
+                        |> ToastMessage
+                    )
+                ]
+                [ text "Show Toast" ]
             ]
         ]
     }
 
 
-update : msg -> String -> ( String, Cmd msg )
-update _ model =
-    ( model, Cmd.none )
+type Msg
+    = ToastMessage Toast.Options
+
+
+update : Msg -> String -> ( String, Cmd Msg )
+update msg model =
+    case msg of
+        ToastMessage options ->
+            ( model, Toast.show options )

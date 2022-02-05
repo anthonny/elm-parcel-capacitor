@@ -7,6 +7,7 @@ dotenv.config()
 const configFileContent = fs.readFileSync(path.join(__dirname, 'capacitor.config.bundle.json'), 'utf8');
 const config = JSON.parse(configFileContent);
 
+config.bundledWebRuntime = false;
 config.server = {
     url: `http://${process.env.HOST_IP}:1234`,
     cleartext: true

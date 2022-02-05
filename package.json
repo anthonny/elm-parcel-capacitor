@@ -10,7 +10,7 @@
     "start": "npm run config:live && concurrently npm:dev:*",
     "config:live": "rimraf capacitor.config.json && node config.live.js && npx cap sync",
     "config:bundle": "rimraf capacitor.config.json && cp capacitor.config.bundle.json capacitor.config.json",
-    "dev:elm": "parcel index.html --host 0.0.0.0",
+    "dev:elm": "PARCEL_ELM_NO_DEBUG=0 parcel index.html --host 0.0.0.0",
     "dev:css": "npm run css -- --watch",
     "build": "npm run config:bundle && npm run build:css && npm run build:elm && npx cap sync",
     "build:css": "NODE_ENV=production npm run css -- --minify",
@@ -23,7 +23,8 @@
     "@capacitor/camera": "latest",
     "@capacitor/core": "latest",
     "@capacitor/ios": "^3.4.0",
-    "@capacitor/splash-screen": "latest"
+    "@capacitor/splash-screen": "latest",
+    "@capacitor/toast": "^1.0.7"
   },
   "devDependencies": {
     "@capacitor/cli": "latest",
