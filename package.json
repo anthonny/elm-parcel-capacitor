@@ -1,0 +1,40 @@
+{
+  "name": "elm-parcel-capacitor",
+  "version": "1.0.0",
+  "description": "An Amazing Capacitor App",
+  "keywords": [
+    "capacitor",
+    "mobile"
+  ],
+  "scripts": {
+    "start": "npm run config:live && concurrently npm:dev:*",
+    "config:live": "rimraf capacitor.config.json && node config.live.js && npx cap sync",
+    "config:bundle": "rimraf capacitor.config.json && cp capacitor.config.bundle.json capacitor.config.json",
+    "dev:elm": "parcel index.html --host 0.0.0.0",
+    "dev:css": "npm run css -- --watch",
+    "build": "npm run config:bundle && npm run build:css && npm run build:elm && npx cap sync",
+    "build:css": "NODE_ENV=production npm run css -- --minify",
+    "build:elm": "parcel build index.html",
+    "css": "npx tailwindcss -i ./css/style.css -o ./style.css",
+    "postinstall": "npm run css"
+  },
+  "dependencies": {
+    "@capacitor/android": "^3.4.0",
+    "@capacitor/camera": "latest",
+    "@capacitor/core": "latest",
+    "@capacitor/ios": "^3.4.0",
+    "@capacitor/splash-screen": "latest"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "latest",
+    "@parcel/transformer-elm": "^2.2.1",
+    "@parcel/transformer-typescript-tsc": "^2.2.1",
+    "concurrently": "^7.0.0",
+    "dotenv": "^16.0.0",
+    "parcel": "^2.2.1",
+    "rimraf": "^3.0.2",
+    "tailwindcss": "^3.0.18"
+  },
+  "author": "",
+  "license": "ISC"
+}

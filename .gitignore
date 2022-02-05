@@ -1,0 +1,12 @@
+.idea/
+node_modules/
+.vscode/
+*.map
+.DS_Store
+.sourcemaps
+capacitor.config.json
+style.css
+dist
+elm-stuff
+.parcel-cache
+.env

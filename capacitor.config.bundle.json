@@ -1,0 +1,11 @@
+{
+  "appId": "com.example.app",
+  "appName": "elm-parcel-capacitor",
+  "bundledWebRuntime": true,
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  }
+}
