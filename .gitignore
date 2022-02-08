@@ -6,6 +6,7 @@ node_modules/
 .sourcemaps
 capacitor.config.json
 style.css
+!css/style.css
 dist
 elm-stuff
 .parcel-cache
